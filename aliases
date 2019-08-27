@@ -1,0 +1,65 @@
+# ls aliases
+alias l='ls -hlFX --group-directories-first'
+alias ll='ls -hlFX --group-directories-firs | less'
+alias la='ls -AhlFX --group-directories-first'
+alias lal='ls -AhlFX --group-directories-first | less'
+alias lt='tree -phFD --du --dirsfirst -L 2'
+alias ld='tree -d -L 2'
+
+# explain what is being done with the -v option
+# prompt before overwrite i.e. pass the -i option to make mv/cp interactive
+# if the same name files/folder already exists in the destination directory
+alias mv='mv -iv'
+alias cp='cp -iv'
+alias rename='rename -v'
+
+# -I: prompt  once before removing more than three files, or when removing recursively
+# less intrusive than -i, while still giving protection against most mistakes
+alias rm='rm -Iv'
+
+# du alias
+alias dll='du -sch *'
+
+# Atualizar sistema
+alias atualizar='sudo apt update && sudo apt list --upgradable && sudo apt full-upgrade && sudo apt autoremove'
+
+# Abre neovim, ao inves de vim
+alias vim='nvim'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Makefile will save its output to 'log' file
+alias makelog='make >&log'
+
+# Outros
+alias mkdir='mkdir -p'
+alias chown='chown -v'
+alias chmod='chmod -v'
+alias grep='grep --color=always'
+alias diff='colordiff'
+alias tar='tar --verbose'
+alias tmux='tmux -2'
+alias df='pydf -a -h -B'
+alias more='less'
+alias logout='sudo pkill -u $USER'
+
+# Abrir arquivo e jogar saida em /dev/null
+function bgopen() {
+      for file in "$@"; do
+            if [ ! -n "$file" ]; then
+                  echo "USAGE: bgopen <filename>";
+            else
+                  ( xdg-open "$file" > /dev/null 2>&1 );
+            fi
+     done
+}
+
+# Print contents after moving to given directory
+# Overrides buitin cd command
+cd()
+{
+    builtin cd $@
+    ls -hlFX --group-directories-first
+}
