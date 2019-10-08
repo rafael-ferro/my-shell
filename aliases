@@ -64,5 +64,5 @@ function bgopen() {
 cd()
 {
     builtin cd $@
-    ls -hlFX --group-directories-first
+    ls -AhlFX --group-directories-first
 }
