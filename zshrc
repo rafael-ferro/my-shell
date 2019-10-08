@@ -1,15 +1,18 @@
+# User configuration
+DEFAULT_USER="rafael"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/.local/share:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/rafael/.oh-my-zsh"
+export ZSH="/home/${DEFAULT_USER}/.oh-my-zsh"
 
 # Anaconda3 path
-export PATH="/home/rafael/.anaconda3/bin:$PATH"
+export PATH="/home/${DEFAULT_USER}/.anaconda3/bin:$PATH"
 
 # Apache Spark path
-export SPARK_HOME="/home/rafael/.spark-2.4.3-bin-hadoop2.7"
-export PATH="/home/rafael/.spark-2.4.3-bin-hadoop2.7/bin:$PATH"
+export SPARK_HOME="/home/${DEFAULT_USER}/.spark-2.4.3-bin-hadoop2.7"
+export PATH="/home/${DEFAULT_USER}/.spark-2.4.3-bin-hadoop2.7/bin:$PATH"
 export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
@@ -50,7 +53,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -86,9 +89,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 # My aliases
 source $HOME/.aliases
-
-# User configuration
-DEFAULT_USER="rafael"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
