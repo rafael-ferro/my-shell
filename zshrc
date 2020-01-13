@@ -29,11 +29,14 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  virtualenv
-  python
-  pyenv
   colorize
+  extract
+  git
+  pyenv
+  python
+  vi-mode
+  virtualenv
+  vscode
   zsh-syntax-highlighting
 )
 
@@ -83,7 +86,7 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
 
 # https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
 # vi mode
-bindkey -v
+# bindkey -v
 export KEYTIMEOUT=1
 
 # Change cursor shape for different vi modes.
@@ -106,4 +109,29 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+
+# https://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode/156204#156204
+bindkey -M viins 'jj' vi-cmd-mode
+
+# https://www.reddit.com/r/zsh/comments/bevn6v/how_to_remap_movement_keys_in_vi_mode/
+bindkey -M vicmd j vi-backward-char
+bindkey -M vicmd k vi-down-line-or-history
+bindkey -M vicmd l vi-up-line-or-history
+bindkey -M vicmd ç vi-forward-char
+
+# https://superuser.com/questions/1357131/zsh-in-vi-mode-but-using-arrow-keys-to-search-history
+autoload -Uz history-search-end
+
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
+bindkey -M vicmd '^[[A' history-beginning-search-backward-end \
+                 '^[OA' history-beginning-search-backward-end \
+                 '^[[B' history-beginning-search-forward-end \
+                 '^[OB' history-beginning-search-forward-end
+bindkey -M viins '^[[A' history-beginning-search-backward-end \
+                 '^[OA' history-beginning-search-backward-end \
+                 '^[[B' history-beginning-search-forward-end \
+                 '^[OB' history-beginning-search-forward-end
 
