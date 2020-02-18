@@ -7,9 +7,12 @@ export ZSH="/home/${DEFAULT_USER}/.config/oh-my-zsh"
 # Anaconda3 path
 export PATH="/home/${DEFAULT_USER}/.anaconda3/bin:$PATH"
 
+# polynote
+export PATH="/home/${DEFAULT_USER}/.polynote:$PATH"
+
 # Apache Spark path
-export SPARK_HOME="/home/${DEFAULT_USER}/.spark-2.4.3-bin-hadoop2.7"
-export PATH="/home/${DEFAULT_USER}/.spark-2.4.3-bin-hadoop2.7/bin:$PATH"
+export SPARK_HOME="/home/${DEFAULT_USER}/.spark-2.4.4-bin-hadoop2.7"
+export PATH="/home/${DEFAULT_USER}/.spark-2.4.4-bin-hadoop2.7/bin:$PATH"
 export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
@@ -19,7 +22,7 @@ TERM="xterm-256color"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -29,14 +32,9 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  colorize
   extract
   git
-  pyenv
   python
-  vi-mode
-  virtualenv
-  vscode
   zsh-syntax-highlighting
 )
 
@@ -78,7 +76,6 @@ prompt_insync_status() {
   fi
 }
 
-POWERLEVEL9K_CUSTOM_DROPBOX_STATUS="prompt_dropbox_status"
 POWERLEVEL9K_CUSTOM_INSYNC_STATUS="prompt_insync_status"
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
@@ -87,51 +84,51 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
 # https://gist.github.com/LukeSmithxyz/e62f26e55ea8b0ed41a65912fbebbe52
 # vi mode
 # bindkey -v
-export KEYTIMEOUT=1
+# export KEYTIMEOUT=1
 
-# Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+# # Change cursor shape for different vi modes.
+# function zle-keymap-select {
+#   if [[ ${KEYMAP} == vicmd ]] ||
+#      [[ $1 = 'block' ]]; then
+#     echo -ne '\e[1 q'
+#   elif [[ ${KEYMAP} == main ]] ||
+#        [[ ${KEYMAP} == viins ]] ||
+#        [[ ${KEYMAP} = '' ]] ||
+#        [[ $1 = 'beam' ]]; then
+#     echo -ne '\e[5 q'
+#   fi
+# }
+# zle -N zle-keymap-select
+# zle-line-init() {
+#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+#     echo -ne "\e[5 q"
+# }
+# zle -N zle-line-init
+# echo -ne '\e[5 q' # Use beam shape cursor on startup.
+# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 
-# https://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode/156204#156204
-bindkey -M viins 'jj' vi-cmd-mode
+# # https://superuser.com/questions/151803/how-do-i-customize-zshs-vim-mode/156204#156204
+# bindkey -M viins 'jj' vi-cmd-mode
 
-# https://www.reddit.com/r/zsh/comments/bevn6v/how_to_remap_movement_keys_in_vi_mode/
-bindkey -M vicmd j vi-backward-char
-bindkey -M vicmd k vi-down-line-or-history
-bindkey -M vicmd l vi-up-line-or-history
-bindkey -M vicmd ç vi-forward-char
+# # https://www.reddit.com/r/zsh/comments/bevn6v/how_to_remap_movement_keys_in_vi_mode/
+# bindkey -M vicmd j vi-backward-char
+# bindkey -M vicmd k vi-down-line-or-history
+# bindkey -M vicmd l vi-up-line-or-history
+# bindkey -M vicmd ç vi-forward-char
 
-# https://superuser.com/questions/1357131/zsh-in-vi-mode-but-using-arrow-keys-to-search-history
-autoload -Uz history-search-end
+# # https://superuser.com/questions/1357131/zsh-in-vi-mode-but-using-arrow-keys-to-search-history
+# autoload -Uz history-search-end
 
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
+# zle -N history-beginning-search-backward-end history-search-end
+# zle -N history-beginning-search-forward-end history-search-end
 
-bindkey -M vicmd '^[[A' history-beginning-search-backward-end \
-                 '^[OA' history-beginning-search-backward-end \
-                 '^[[B' history-beginning-search-forward-end \
-                 '^[OB' history-beginning-search-forward-end
-bindkey -M viins '^[[A' history-beginning-search-backward-end \
-                 '^[OA' history-beginning-search-backward-end \
-                 '^[[B' history-beginning-search-forward-end \
-                 '^[OB' history-beginning-search-forward-end
+# bindkey -M vicmd '^[[A' history-beginning-search-backward-end \
+#                  '^[OA' history-beginning-search-backward-end \
+#                  '^[[B' history-beginning-search-forward-end \
+#                  '^[OB' history-beginning-search-forward-end
+# bindkey -M viins '^[[A' history-beginning-search-backward-end \
+#                  '^[OA' history-beginning-search-backward-end \
+#                  '^[[B' history-beginning-search-forward-end \
+#                  '^[OB' history-beginning-search-forward-end
 
