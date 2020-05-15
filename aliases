@@ -3,9 +3,9 @@ alias sudo='sudo '
 
 # ls aliases
 alias l='ls -hlFX --group-directories-first'
-alias ll='ls -hlFX --group-directories-firs | less'
+alias ll='ls -hlFX --group-directories-firs --color=always | less -R'
 alias la='ls -AhlFX --group-directories-first'
-alias lal='ls -AhlFX --group-directories-first | less'
+alias lal='ls -AhlFX --group-directories-first --color=always | less -R'
 alias lt='tree -phFD --du --dirsfirst -L 2'
 alias ld='tree -d -L 2'
 
