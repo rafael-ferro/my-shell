@@ -19,7 +19,8 @@ export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 # https://askubuntu.com/questions/54145/how-to-fix-strange-backspace-behaviour-with-urxvt-zsh
 TERM="xterm-256color"
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="oxide"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -57,7 +58,14 @@ fi
 # Powerlevel9k zhs-theme customization
 # https://github.com/bhilburn/powerlevel9k
 ##############################################################################
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda dir vcs)
+
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_RPROMPT_ON_NEWLINE=false
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda dir vcs newline)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status custom_insync_status root_indicator background_jobs battery)
 
 # Insync status
