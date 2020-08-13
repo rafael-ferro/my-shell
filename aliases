@@ -1,5 +1,5 @@
 # When using sudo, use alias expansion (otherwise sudo ignores your aliases)
-alias sudo='sudo '
+alias sudo='sudo -E '
 
 # ls aliases
 alias l='ls -hlFX --group-directories-first'
