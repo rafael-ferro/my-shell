@@ -30,7 +30,11 @@ alias atualizar='sudo apt update && sudo apt list --upgradable && sudo apt full-
 # Abre neovim, ao inves de vim
 alias vim='nvim'
 
+# Visual Studio Code
 alias code='/usr/share/code/code --no-sandbox --unity-launch'
+
+# Jupyterlab
+alias jlab='jupyter-lab'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -52,10 +56,10 @@ alias more='less'
 alias logout='sudo pkill -u $USER'
 
 # Abrir arquivo e jogar saida em /dev/null
-function bgopen() {
+function open() {
       for file in "$@"; do
             if [ ! -n "$file" ]; then
-                  echo "USAGE: bgopen <filename>";
+                  echo "USAGE: open <filename>";
             else
                   ( xdg-open "$file" > /dev/null 2>&1 );
             fi
