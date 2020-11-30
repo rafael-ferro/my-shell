@@ -25,7 +25,7 @@ alias rm='rm -Iv'
 alias dll='du -sch *'
 
 # Atualizar sistema
-alias atualizar='sudo apt update && sudo apt list --upgradable && sudo apt full-upgrade && sudo apt autoremove && flatpak update'
+alias atualizar='sudo apt update && sudo apt list --upgradable && sudo apt full-upgrade && sudo apt autoremove && flatpak update && flatpak uninstall --unused'
 
 # Abre neovim, ao inves de vim
 alias vim='nvim'
