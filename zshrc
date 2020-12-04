@@ -79,3 +79,4 @@ export PATH="$HOME/.serverless/bin:$PATH"
 
 bindkey -v
 bindkey jj vi-cmd-mode
+bindkey '\e.' insert-last-word
