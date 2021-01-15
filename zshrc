@@ -28,8 +28,6 @@ COMPLETION_WAITING_DOTS="true"
 # git clone https://github.com/Aloxaf/fzf-tab ~ZSH_CUSTOM/plugins/fzf-tab
 plugins=(
   extract
-  git
-  python
   zsh-syntax-highlighting
   vi-mode
   fzf-tab
