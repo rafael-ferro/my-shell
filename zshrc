@@ -5,14 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# User configuration
-DEFAULT_USER="rafael"
-
 # Path to your oh-my-zsh installation.
-export ZSH="/home/${DEFAULT_USER}/.config/oh-my-zsh"
-
-# Anaconda3 path
-# export PATH="/home/${DEFAULT_USER}/.anaconda3/bin:$PATH"  # commented out by conda initialize
+export ZSH="${HOME}/.config/oh-my-zsh"
 
 # https://askubuntu.com/questions/54145/how-to-fix-strange-backspace-behaviour-with-urxvt-zsh
 TERM="xterm-256color"
@@ -33,6 +27,8 @@ plugins=(
   git
   python
   zsh-syntax-highlighting
+  vi-mode
+  fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -77,6 +73,14 @@ export PATH="$HOME/.serverless/bin:$PATH"
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
 
+# Enable vim mode
 bindkey -v
 bindkey jj vi-cmd-mode
 bindkey '\e.' insert-last-word
+
+VI_MODE_SET_CURSOR=true
+
+# Install Ruby Gems to ~/.gems
+# https://jekyllrb.com/docs/installation/ubuntu/
+export GEM_HOME="$HOME/.gems"
+export PATH="$HOME/.gems/bin:$PATH"
