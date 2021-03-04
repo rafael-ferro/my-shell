@@ -28,7 +28,8 @@ alias dll='du -sch *'
 alias atualizar='sudo apt update && sudo apt list --upgradable && sudo apt full-upgrade && sudo apt autoremove && flatpak update && flatpak uninstall --unused'
 
 # Abre neovim, ao inves de vim
-alias vim='nvim -p'
+alias vim='nvim'
+alias vip='nvim -p'
 
 # Visual Studio Code
 alias code='/usr/share/code/code --no-sandbox --unity-launch'
